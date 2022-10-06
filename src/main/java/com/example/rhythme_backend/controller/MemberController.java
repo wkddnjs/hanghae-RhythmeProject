@@ -22,22 +22,22 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/member/signup")
+    @PostMapping("/members/signup")
     public ResponseEntity<?> signupMember(@RequestBody SignupRequestDto requestDto) {
         return memberService.signupMember(requestDto);
     }
 
-    @PostMapping("/member/emailcheck")
+    @PostMapping("/members/emailcheck")
     public ResponseEntity<?> emailDubCheck(@RequestBody EmailCheckRequestDto requestDto) {
         return memberService.emailCheck(requestDto);
     }
 
-    @PostMapping("/member/nicknamecheck")
+    @PostMapping("/members/nicknamecheck")
     public ResponseEntity<?> nicknameDubCheck(@RequestBody NicknameCheckRequestDto requestDto) {
         return memberService.nicknameCheck(requestDto);
     }
 
-    @PostMapping("/member/signin")
+    @PostMapping("/members/signin")
     public ResponseEntity<?> loginMember(@RequestBody LoginRequestDto requestDto, HttpServletResponse response) {
         return memberService.loginMember(requestDto,response);
     }
@@ -49,12 +49,12 @@ public class MemberController {
         return new ResponseEntity<>(Message.success("로그인에 성공하였습니다."), HttpStatus.OK);
     }
 
-    @DeleteMapping("/auth/member")
+    @DeleteMapping("/auth/members")
     public ResponseEntity<?> resignMember(@RequestBody ResignRequestDto requestDto, HttpServletRequest request) {
         return memberService.resignMember(requestDto,request);
     }
 
-    @PostMapping("/auth/member/signout")
+    @PostMapping("/auth/members/signout")
     public ResponseEntity<?> signOutMember(@RequestBody LogoutRequestDto requestDto, HttpServletRequest request) {
         return memberService.logoutMember(requestDto,request);
     }
@@ -74,7 +74,7 @@ public class MemberController {
         return new ResponseEntity<>(Message.success(socialOAuthResponseDto),HttpStatus.OK);
     }
 
-    @PostMapping("/member/refreshtoken")
+    @PostMapping("/members/refreshtoken")
     public ResponseEntity<?> refreshTokenCheck(HttpServletRequest request, HttpServletResponse response){
         return memberService.refreshToken(request, response);
     }
